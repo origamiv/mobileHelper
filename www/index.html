@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html id="htmlid">
+    <head>                     
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta http-equiv="Content-Type" Content="text/html; Charset=utf-8">
+        
+       <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">
+       <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
+       <link rel="stylesheet" type="text/css" href="js/easyui/demo.css">  
+       <link rel="stylesheet" href="js/player/simpleplayer.css" type="text/css">
+       <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+       <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+       <script src="js/player/jquery.simpleplayer.js"></script>
+       
+       <script src="common.js"></script>
+       <title>Mobile Helper</title>
+    </head>
+    <body class="easyui-layout">                                                              
+        <div data-options="region:'north',border:false" style="height:60px;padding-left:10px"><h1>Personal Trener</h1></div>               
+         
+        <div data-options="region:'center'" style="padding: 20px;">
+        
+        <form id="flogin" method="post">
+            <h2>Авторизуйтесь</h2>
+            <table cellpadding='5px' border=0>
+              <tr> 
+              <td style="width: 70px;">Ваш ID</td>
+              <td><input class="easyui-textbox" type="text" name="id_user" id='id_user' data-options="" /></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td colspan="2" align="center" id="reg"><input type="submit" value="Авторизоваться"></td>
+              </tr>
+            </table>
+        </form>    
+            <h2>...или зарегистрируйтесь</h2>
+            
+        <form id="freg" method="post">    
+            <table cellpadding='5px' border=0>
+            <tr style="padding: 20px;">
+                <td style="width: 70px;"><label for="fio">ФИО:</label></td>
+                <td><input class="easyui-textbox" type="text" name="fio" id='fio' data-options="" /></td>
+            </tr>
+            <tr style="padding: 20px;">
+                <td><label for="age">Возраст:</label></td>
+                <td><input class="easyui-textbox" type="text" name="age" id='age' data-options="" /></td>
+            </tr>
+            
+            <tr style="padding: 20px;">
+                <td><label for="ves">Вес:</label></td>
+                <td><input class="easyui-textbox" type="text" name="ves" id='ves' data-options="" /></td>
+            </tr>
+            
+            <tr style="padding: 20px;">
+                <td><label for="rost">Рост:</label></td>
+                <td><input class="easyui-textbox" type="text" name="rost" id='rost' data-options="" /></td>
+            </tr>
+            
+            <tr style="padding: 20px;">
+                <td><label for="device">ID каски:</label></td>
+                <td><input class="easyui-textbox" type="text" name="device" id='device' data-options="" /></td>
+            </tr>
+            
+            <!--tr style="padding: 20px;">
+                <td><label for="email">Email:</label></td>                
+                <td><input class="easyui-textbox" type="text" name="email" data-options="validType:'email'" /></td>
+            </tr-->
+            
+            <tr style="padding: 20px;">
+                <td colspan="2" align="center" id="reg"><input type="submit" value="Зарегистрироваться"></td>
+            </tr>
+            
+            </table>
+             
+        </form>
+         
+    
+        </div>     
+    <div data-options="region:'south',border:false" style="height:40px;background:white;padding:10px;">Результаты</div>
+        
+        <div class='app' style='display: none;'> </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+        $( document ).ready(function() 
+        {
+        
+        $('#flogin').form({            
+            onSubmit:function()
+            {
+                    var id_user=$('#id_user').val();
+                    
+                    //alert(PATH);
+                    if (id_user!='')
+                    {
+                    $.get( PATH+'/ajax_func.php?func=user_by_id&id='+id_user, function( data ) {                    
+                        //alert(data);
+                        if (data=='[]')
+                        {
+                            alert('Нет таклого пользователя');
+                        }
+                        else
+                        {
+                            document.location='second.html#user_'+id_user;  
+                        }
+                       //$('#reg').html(data);
+                    });                                 
+                    }
+                    else 
+                    {
+                      alert('Введите хотя бы что-нибудь');  
+                    }
+            }
+        });
+        
+        
+        $('#freg').form({            
+            onSubmit:function()
+            {
+                var prok=$(this).form('validate');
+                if (prok==true)
+                {
+                    var fio=$('#fio').val();
+                    var age=$('#age').val();
+                    var ves=$('#ves').val();
+                    var rost=$('#rost').val();
+                    var device=$('#device').val();
+                    var url=PATH+'/mobile_reg.php?fio='+fio+'&age='+age+'&ves='+ves+'&rost='+rost+'&device='+device;
+                    alert(url);
+                    $.get(url, function( data ) {                    
+                       // alert(data );
+                       $('#reg').html(data);
+                    });
+                }
+                return false; //
+            }
+        });
+        
+        });    
+        
+        
+    </script>
+
+
+</body>
+</html>

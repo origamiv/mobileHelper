@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html id="htmlid">
+    <head>                     
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta http-equiv="Content-Type" Content="text/html; Charset=utf-8">
+        
+       <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">
+       <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
+       <link rel="stylesheet" type="text/css" href="js/easyui/demo.css">  
+       <link rel="stylesheet" href="js/player/simpleplayer.css" type="text/css">
+       
+       <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+       <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+       
+       <script src="js/player/jquery.simpleplayer.js"></script>
+       <script src="common.js"></script>       
+        <title>Mobile Helper</title>
+    </head>
+    <body>                         
+        <div style="height: 30px;padding-bottom: 15px;">
+            <table style="width: 100%;">
+            <tr><td><span style="float: left; font-size: 12pt; font-weight: bold;">Personal Trener</span></td>
+            <td>
+            <a id='del' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" title='Удалить'></a>
+            <a id='check' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" title="Проверить"></a>
+            <a id='save' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Сохранить</a>
+            </td>
+            </tr>
+            </table>
+        </div>
+        
+        
+    <div id="tabs" class="easyui-tabs">
+        
+         
+        <div data-options="title:'Выбранный эксперимент'" style="padding: 15px;overflow-x: hidden;overflow-y: hidden;"> 
+        
+        
+             
+             <div style="margin: 10px;">
+             <input id="experiment">
+             <script type="text/javascript">
+             //alert(PATH);
+             $('#experiment').combobox({
+                    url: PATH+'/ajax_func.php?func=trainings',
+                    method:'get',
+                    valueField: 'id',
+                    textField: 'text',
+                    label: 'Эксперимент:',
+                    labelPosition: 'center',
+                    width: '250px'
+             });
+             </script>            
+             </div>           
+             <p id="ptime" style="background-color: #c0cfe8; width:100%;padding:5px;">Времени прошло:<b id="timeleft">10 мин 23 сек</b></p>
+             <br>
+             
+             <table width='100%' cellpadding=0 cellspacing=0 id="exp">                         
+             <tr>
+             <td colspan="1">
+             <img id="bstart" src='img/play.png' width=72 />
+             <img id='bstop' src='img/stop.png' width=48 /> 
+             </td>                          
+             
+             <td align='center' colspan="2" style="border: 1px solid #9aa5b7;">
+             <span id='min' style="font-size: 30pt;">0</span> мин
+             <span id='sec' style="font-size: 30pt;">0</span> сек
+             </td>
+             </tr>
+             
+             <tr><td colspan="3">
+             <h2 style="background-color: #DCDCDC;">Что нужно делать</h2>             
+                                                                                                                                
+             <div id="descr" style="font-size: 12pt; border: 1px solid #DCDCDC; float: left;">             
+             Спокойно стоять и думать о хорошем в течение 5 минут.</div>
+             </td>
+             </tr>
+             
+             <tr>
+             <td colspan="3" style=""><img id="img" src='trainings/stay.jpg' height=200 /></td>
+             </tr>
+             </table>
+             <img id="splash" src="img/kopaem.jpg" width='70%' />
+             <input type="hidden" name="timetest" id="timetest" value="0">
+             <input type="hidden" name="hiduser" id="hiduser" value="0">
+             <input type="hidden" name="id_exp" id="id_exp" value="0">             
+             <input type="hidden" name="lref" id="lref" value=""> 
+        </div>     
+        
+    
+    
+        <div data-options="title:'Результаты'" style="height:40px;background:white;padding:10px;">         
+        <p id="layres">Результатов пока нет.</p>
+        <p id="laylink" style="text-decoration: underline; color: blue;">Обновить</p>
+        </div>
+        
+    
+    
+    </div>
+    <div id="duser" data-options="" style="height:40px;background:white;padding:10px;">    
+            Тесты выполняет
+    </div> 
+    
+    <div id="mmm" style="background-color: yellow;">mmmm</div>
+        
+       
+           
+        <div class='app' style='display: none;'> </div>
+        
+    <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
