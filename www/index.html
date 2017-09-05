@@ -130,7 +130,7 @@
                     //alert(url);
                     $.get(url, function( data ) {                    
                        // alert(data );
-                       $('#reg').html(data);
+                       $('#reg').html('Ваш ID'+data);
                        
                        setTimeout(function(){
                           document.location='second.html#user_'+data;   

@@ -81,7 +81,7 @@ function del_activity()
             serAct = JSON.stringify(activity);
               //alert(serializedArr);
             setCookie('activity',serAct);  
-            alert('Все пропало!');
+            alert('Куки очищены');
             }
             
 function activity_time(min, sec)
@@ -154,8 +154,8 @@ function show_time_all()
                 style_yell='background-color:yellow;color:black;text-align:center';
                 
                 if (activity.S1_must==0) {style1='';} 
-                else if (activity.S1_must>activity.S1_fact) {style1=style_yell;} 
-                else if (activity.S1_must==activity.S1_fact) {style1=style_green;}
+                else if ((activity.S1_must-activity.S1_fact)>1) {style1=style_yell;} 
+                else if ((activity.S1_must-activity.S1_fact)<=1) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>S1 Стоит</td><td style="'+style1+'">'+activity.S1_must+'</td><td style="'+style1+'">'+activity.S1_fact+'</td><td><a activity="S1" class="delact">Удалить</a></td></tr>';                                                               
                 
@@ -202,8 +202,8 @@ function show_time_all()
                 timestr=timestr+'<tr><td>D5 Подъем на лифте</td><td style="'+style1+'">'+activity.D5_must+'</td><td style="'+style1+'">'+activity.D5_fact+'</td><td><a activity="D5" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D6_must==0) {style1='';} 
-                else if (activity.D6_must>activity.D6_fact) {style1=style_yell;} 
-                else if (activity.D6_must==activity.D6_fact) {style1=style_green;}
+                else if ((activity.D6_must-activity.D6_fact)>1) {style1=style_yell;} 
+                else if ((activity.D6_must-activity.D6_fact)<=1) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D6 Спуск на лифте</td><td style="'+style1+'">'+activity.D6_must+'</td><td style="'+style1+'">'+activity.D6_fact+'</td><td><a activity="D6" class="delact">Удалить</a></td></tr>';
                 
