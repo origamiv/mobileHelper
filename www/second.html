@@ -10,12 +10,14 @@
        <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
        <link rel="stylesheet" type="text/css" href="js/easyui/demo.css">  
        <link rel="stylesheet" href="js/player/simpleplayer.css" type="text/css">
-       
+       <script type="text/javascript">alert('1 jquery');</script>
        <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
        <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
-       
+       <script type="text/javascript">alert('2 player');</script>
        <script src="js/player/jquery.simpleplayer.js"></script>
-       <script src="common.js"></script>       
+       <script type="text/javascript">alert('3 common');</script>
+       <script src="common.js"></script>      
+       <script type="text/javascript">alert('4 end head');</script> 
         <title>Mobile Helper</title>
     </head>
     <body>                         
@@ -109,10 +111,12 @@
        
            
         <div class='app' style='display: none;'> </div>
-        
+     <script type="text/javascript">alert('5 before cordova');</script>   
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">alert('6 index.js');</script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">alert('7 before main');</script>
         <script type="text/javascript" src="main.js"></script>
-
+    <script type="text/javascript">alert('end body');</script>
 </body>
 </html>
