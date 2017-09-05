@@ -340,7 +340,7 @@ function stopTest()
     }
 }            
 //==============================================            
-$( document ).ready(function() 
+document.addEventListener("deviceready", function() 
 {
     alert('hhh');    
 });  

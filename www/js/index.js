@@ -30,22 +30,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('app', this.onDeviceReady.bind(this), false);
-        //var ht=document.getElementById("htmlid");  
-        //ch=ht.clientHeight;  
-        //cw=ht.clientWidth; 
-        //alert(hh);       
-        //document.getElementById("page1").style.height=ch+'px';                       
-        
-        /*
-        document.getElementById("map").style.width=cw+'px';        
-        var maph=ch-32-100;
-        document.getElementById("map").style.height=maph+'px';   
-        ph=document.getElementById("content").clientHeight-maph;
-        document.getElementById("predp").style.width=cw+'px';
-        */
-        //document.getElementById("predp").style.height=;
-        //alert(ph);
-    //}
+
     },
 
     // deviceready Event Handler
