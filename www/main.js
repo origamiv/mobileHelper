@@ -81,7 +81,7 @@ function del_activity()
             serAct = JSON.stringify(activity);
               //alert(serializedArr);
             setCookie('activity',serAct);  
-            alert('Куки очищены');
+            //alert('Куки очищены');
             }
             
 function activity_time(min, sec)
@@ -235,7 +235,7 @@ function debug(istr)
     
 function check()
 {
-              alert(serializedArr);
+              //alert(serializedArr);
               pr_send=0;
               setCookie('pr_send',pr_send);
                           
@@ -246,12 +246,12 @@ function check()
                 .done(function( data1 ) 
                 {
                       //data=data1[0];
-                      alert(data1);
+                      //alert(data1);
                       data2=JSON.parse(data1);
                       
                       
                       $.each( data2, function( key, data ) {
-                           alert(data.cmd);
+                           //alert(data.cmd);
                       if (data!=null)
                       {                                                                
                         pr_send=1;
