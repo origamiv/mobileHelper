@@ -376,7 +376,7 @@ $( document ).ready(function()
             //alert(t);
             
             
-            $('#mmm').html(serializedArr);  
+            //$('#mmm').html(serializedArr);  
             
             var url2=PATH+'/ajax_func.php?func=sync&t='+t;
                 //alert(url2);
