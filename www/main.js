@@ -235,71 +235,56 @@ function debug(istr)
     
 function check()
 {
-              //alert('mm'+serializedArr);
+              alert(serializedArr);
               pr_send=0;
               setCookie('pr_send',pr_send);
                           
               var id_exp=$('#id_exp').val();            
-              var url2=PATH+'/ajax_func.php?func=send&check=1&id_exp='+id_exp;
+              var url2=PATH+'/ajax_func.php?func=check_data_integrity&id_exp='+id_exp;
               //alert(url2);
-              $.post(url2, {q1: serializedArr})
-                .done(function( data ) 
+              $.post(url2, {json_data: serializedArr})
+                .done(function( data1 ) 
                 {
-                      //alert(data);
-                      if (data=='ok')
+                      //data=data1[0];
+                      alert(data1);
+                      data2=JSON.parse(data1);
+                      
+                      
+                      $.each( data2, function( key, data ) {
+                           alert(data.cmd);
+                      if (data!=null)
                       {                                                                
-                        //serializedArr='';
-//                        setCookie('results','');
-//                        //alert(data);
-//                        $('#save').hide();  
-//                        $('#del').hide(); 
-                      pr_send=1;
-                      //sendCookie('pr_send',pr_send);
-                    //var id_exp=$('#id_exp').val(); 
-                    //var id_user=$('#id_user').val(); 
-                    // url=PATH+'/ajax_func.php?path='+PATH+'&func=get_tests&id='+id_user+'&id_exp='+id_exp; 
-                    
-                    url=PATH+'/ajax_func.php?path='+PATH+'&func=check&id_exp='+id_exp+'&by_act=1';
-                    //alert(url);
-                    $.getJSON(url, function( data ) {
-                        if (data!=null)
-                        {
-                        //alert(data);
+                        pr_send=1;
                         s12 = JSON.stringify(data);
                         //alert(JSON.stringify(data.D3));
-                        if (data.S1!=undefined) {activity.S1_fact=data.S1.fact;}
-                        if (data.S2!=undefined) {activity.S2_fact=data.S2.fact;}
-                        if (data.S3!=undefined) {activity.S3_fact=data.S3.fact;}
-                        if (data.D1!=undefined) {activity.D1_fact=data.D1.fact;}
-                        if (data.D2!=undefined) {activity.D2_fact=data.D2.fact;}
-                        if (data.D3!=undefined) {activity.D3_fact=data.D3.fact;}
-                        if (data.D4!=undefined) {activity.D4_fact=data.D4.fact;}
-                        if (data.D5!=undefined) {activity.D5_fact=data.D5.fact;}            
-                        if (data.D6!=undefined) {activity.D6_fact=data.D6.fact;}  
+                        if (data.cmd=='S1') {activity.S1_fact=data.fact;}
+                        if (data.cmd=='S2') {activity.S2_fact=data.fact;}
+                        if (data.cmd=='S3') {activity.S3_fact=data.fact;}
+                        if (data.cmd=='D1') {activity.D1_fact=data.fact;}
+                        if (data.cmd=='D2') {activity.D2_fact=data.fact;}
+                        if (data.cmd=='D3') {activity.D3_fact=data.fact;}
+                        if (data.cmd=='D4') {activity.D4_fact=data.fact;}
+                        if (data.cmd=='D5') {activity.D5_fact=data.fact;}  
+                        if (data.cmd=='D6') {activity.D6_fact=data.fact;}  
                         
                         serAct = JSON.stringify(activity);
                           //alert('sa'+serializedArr);
                         setCookie('activity',serAct);
                         show_time_all();
-                        }
-                        else 
-                      {
-                          pr_send=0;
-                          setCookie('pr_send',pr_send);
-                          alert('На сервере пусто, попробуйте позже.');
-                      }
-                        
-                    });                                        
-                      
                       //alert('ok');
                       }
-                      else 
-                      {
-                          pr_send=0;
-                          setCookie('pr_send',pr_send);
-                          alert('На сервере что-то не так, попробуйте позже.');
-                      }
-                });
+                else 
+                    {
+                        pr_send=0;
+                        setCookie('pr_send',pr_send);
+                        alert('На сервере пусто, попробуйте позже.');
+                    }
+                      });
+                      
+                      //data=data2[0];
+                      
+                }
+                );
                 
                 pr_send=getCookie('pr_send');
                 if (pr_send==1)
