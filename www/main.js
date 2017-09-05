@@ -339,10 +339,4 @@ function stopTest()
               pr='';
     }
 }            
-//==============================================            
-document.addEventListener("deviceready", function() 
-{
-    alert('hhh');    
-});  
-        
-        
+//============================================== 
