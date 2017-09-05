@@ -343,6 +343,7 @@ function stopTest()
 $( document ).ready(function() 
 {
             //var i_act=0;
+            serializedArr='';
              
             debug('start');
             results_from_cookie();
