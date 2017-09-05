@@ -223,7 +223,7 @@ function show_time_all()
                 $('.delall').linkbutton({
                      iconCls: 'icon-cancel'
                 });
-                
+                         
                 $('#mmm').html(serializedArr);
                 //alert(z);
 }
@@ -446,12 +446,28 @@ $( document ).ready(function()
             $('#bstart').show();
             $('#bstop').hide();
               
-         
-            $('#experiment').combobox({
-                onClick: function(param)
-                {
-                    //param.id = 2;
-                    //param.language = 'js';
+            $('.exp1').bind("click", function()
+            {   
+                cmd=$(this).attr('cmd');
+                
+                url=PATH+'/ajax_func.php?func=trainings&cmd='+cmd;
+                $.getJSON(url, function( data) {
+                   param=data[0];
+                
+                
+                
+                //alert(cmd);
+       //         var param=new Object;
+//                    
+//                    
+//                    param.id = 2;
+//                    param.tim = 300;
+//                    param.pic='stay.jpg';
+//                    param.descr='ffff';
+//                    param.mp3='stay.mp3';
+                    
+                    
+                    
                     //alert(param.pic);
                     debug('exp_click');
                     current_test=param.id;
@@ -487,10 +503,12 @@ $( document ).ready(function()
                     show_time_all();
                     
                     debug('exp_click_end');
-                    //$('.pres').show();                    
-                    //$('.pres').load(url);
-                }
+                    });
+                    
             });
+            
+            
+            
             
             $("body" ).on("click",'.delact', function()
             {
@@ -586,7 +604,7 @@ $( document ).ready(function()
        
         $( "#splash" ).bind( "click", function() 
         {  
-            $('#experiment').combobox('reload',PATH+'/ajax_func.php?func=trainings');
+            //$('#experiment').combobox('reload',PATH+'/ajax_func.php?func=trainings');
         });
         
         $( "#splash" ).bind( "dblclick", function() 

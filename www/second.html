@@ -21,7 +21,7 @@
     <body>                         
         <div style="height: 30px;padding-bottom: 15px;">
             <table style="width: 100%;">
-            <tr><td><span style="float: left; font-size: 12pt; font-weight: bold;">Personal Trener</span></td>
+            <tr><td><span style="float: left; font-size: 12pt; font-weight: bold;">Активный Эксперимент</span></td>
             <td>            
             <!--a id='check' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" title="Проверить"></a-->
             <a id='save' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Закончить</a>
@@ -39,19 +39,21 @@
         
              
              <div style="margin: 10px;">
-             <input id="experiment">
-             <script type="text/javascript">
-             //alert(PATH);
-             $('#experiment').combobox({
-                    url: PATH+'/ajax_func.php?func=trainings',
-                    method:'get',
-                    valueField: 'id',
-                    textField: 'text',
-                    label: 'Эксперимент:',
-                    labelPosition: 'center',
-                    width: '250px'
-             });
-             </script>            
+             
+    <div style="margin:5px 0">
+        <a class="easyui-linkbutton exp1" cmd='S1' style="width:60px">Стоять</a>
+        <a class="easyui-linkbutton exp1" cmd='S2' style="width:60px">Сидеть</a>
+        <a class="easyui-linkbutton exp1" cmd='S3' style="width:60px">Лежать</a>
+        <a class="easyui-linkbutton exp1" cmd='D1' style="width:60px">Идти</a>
+        <a class="easyui-linkbutton exp1" cmd='D2' style="width:60px">Бежать</a>
+    </div>    
+    <div style="margin:10px 0">        
+        <a class="easyui-linkbutton exp1" cmd='D3' style="width:60px">Лест. ↑</a>
+        <a class="easyui-linkbutton exp1" cmd='D4' style="width:60px">Лест. ↓</a>
+        <a class="easyui-linkbutton exp1" cmd='D5' style="width:60px">Лифт ↑</a>
+        <a class="easyui-linkbutton exp1" cmd='D6' style="width:60px">Лифт ↓</a>
+    </div>               
+                       
              </div>           
              <p id="ptime" style="background-color: #c0cfe8; width:100%;padding:5px;">Времени прошло:<b id="timeleft">10 мин 23 сек</b></p>
              <br>
@@ -102,7 +104,7 @@
             Тесты выполняет
     </div> 
     
-    <div id="mmm" style="background-color: yellow;">mmmm</div>
+    <div id="mmm" style="background-color: yellow; width: 300px; height:100px; overflow: scroll;">Здесь будет город-сад!</div>
         
        
            
