@@ -155,55 +155,55 @@ function show_time_all()
                 
                 if (activity.S1_must==0) {style1='';} 
                 else if ((activity.S1_must-activity.S1_fact)>1) {style1=style_yell;} 
-                else if ((activity.S1_must-activity.S1_fact)<=1) {style1=style_green;}
+                else if (activity.S1_must<activity.S1_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>S1 Стоит</td><td style="'+style1+'">'+activity.S1_must+'</td><td style="'+style1+'">'+activity.S1_fact+'</td><td><a activity="S1" class="delact">Удалить</a></td></tr>';                                                               
                 
                 if (activity.S2_must==0) {style1='';} 
-                else if (activity.S2_must>activity.S2_fact) {style1=style_yell;} 
-                else if (activity.S2_must==activity.S2_fact) {style1=style_green;}
+                else if ((activity.S2_must-activity.S2_fact)>1) {style1=style_yell;} 
+                else if (activity.S2_must<activity.S2_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>S2 Сидит</td><td style="'+style1+'">'+activity.S2_must+'</td><td style="'+style1+'">'+activity.S2_fact+'</td><td><a activity="S2" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.S3_must==0) {style1='';} 
-                else if (activity.S3_must>activity.S3_fact) {style1=style_yell;} 
-                else if (activity.S3_must==activity.S3_fact) {style1=style_green;}
+                else if ((activity.S3_must-activity.S3_fact)>1) {style1=style_yell;} 
+                else if (activity.S3_must<activity.S3_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>S3 Лежит</td><td style="'+style1+'">'+activity.S3_must+'</td><td style="'+style1+'">'+activity.S3_fact+'</td><td><a activity="S3" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D1_must==0) {style1='';} 
-                else if (activity.D1_must>activity.D1_fact) {style1=style_yell;} 
-                else if (activity.D1_must==activity.D1_fact) {style1=style_green;}
+                else if ((activity.D1_must-activity.D1_fact)>1) {style1=style_yell;} 
+                else if (activity.D1_must<activity.D1_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D1 Идет</td><td style="'+style1+'">'+activity.D1_must+'</td><td style="'+style1+'">'+activity.D1_fact+'</td><td><a activity="D1" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D2_must==0) {style1='';} 
-                else if (activity.D2_must>activity.D2_fact) {style1=style_yell;} 
-                else if (activity.D2_must==activity.D2_fact) {style1=style_green;}
+                else if ((activity.D2_must-activity.D2_fact)>1) {style1=style_yell;} 
+                else if (activity.D2_must<activity.D2_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D2 Бежит</td><td style="'+style1+'">'+activity.D2_must+'</td><td style="'+style1+'">'+activity.D2_fact+'</td><td><a activity="D2" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D3_must==0) {style1='';} 
-                else if (activity.D3_must>activity.D3_fact) {style1=style_yell;} 
-                else if (activity.D3_must==activity.D3_fact) {style1=style_green;}
+                else if ((activity.D3_must-activity.D3_fact)>1) {style1=style_yell;} 
+                else if (activity.D3_must<activity.D3_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D3 Подъем по лестнице</td><td style="'+style1+'">'+activity.D3_must+'</td><td style="'+style1+'">'+activity.D3_fact+'</td><td><a activity="D3" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D4_must==0) {style1='';} 
-                else if (activity.D4_must>activity.D4_fact) {style1=style_yell;} 
-                else if (activity.D4_must==activity.D4_fact) {style1=style_green;}
+                else if ((activity.D4_must-activity.D4_fact)>1) {style1=style_yell;} 
+                else if (activity.D4_must<activity.D4_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D4 Спуск по лестнице</td><td style="'+style1+'">'+activity.D4_must+'</td><td style="'+style1+'">'+activity.D4_fact+'</td><td><a activity="D4" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D5_must==0) {style1='';} 
-                else if (activity.D5_must>activity.D5_fact) {style1=style_yell;} 
-                else if (activity.D5_must==activity.D5_fact) {style1=style_green;}
+                else if ((activity.D5_must-activity.D5_fact)>1) {style1=style_yell;} 
+                else if (activity.D5_must<activity.D5_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D5 Подъем на лифте</td><td style="'+style1+'">'+activity.D5_must+'</td><td style="'+style1+'">'+activity.D5_fact+'</td><td><a activity="D5" class="delact">Удалить</a></td></tr>';
                 
                 if (activity.D6_must==0) {style1='';} 
                 else if ((activity.D6_must-activity.D6_fact)>1) {style1=style_yell;} 
-                else if ((activity.D6_must-activity.D6_fact)<=1) {style1=style_green;}
+                else if (activity.D6_must<activity.D6_fact) {style1=style_green;}
                 
                 timestr=timestr+'<tr><td>D6 Спуск на лифте</td><td style="'+style1+'">'+activity.D6_must+'</td><td style="'+style1+'">'+activity.D6_fact+'</td><td><a activity="D6" class="delact">Удалить</a></td></tr>';
                 
