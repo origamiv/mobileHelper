@@ -127,10 +127,15 @@
                     var rost=$('#rost').val();
                     var device=$('#device').val();
                     var url=PATH+'/mobile_reg.php?fio='+fio+'&age='+age+'&ves='+ves+'&rost='+rost+'&device='+device;
-                    alert(url);
+                    //alert(url);
                     $.get(url, function( data ) {                    
                        // alert(data );
                        $('#reg').html(data);
+                       
+                       setTimeout(function(){
+                          document.location='second.html#user_'+data;   
+                       }, 3000); 
+                       
                     });
                 }
                 return false; //
