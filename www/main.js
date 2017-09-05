@@ -345,14 +345,14 @@ $( document ).ready(function()
             //var i_act=0;
             serializedArr='';
              
-            debug('start');
+            alert('start');
             results_from_cookie();
             cmd='S1';
             show_time_all();
             $('#ptime').hide();
             
             t=Date.now();            
-            debug('time='+t);
+            alert('time='+t);
             //sec=0;
              /*
             timer1= setInterval(function() 
@@ -376,10 +376,10 @@ $( document ).ready(function()
             //alert(t);
             
             
-            //$('#mmm').html(serializedArr);  
+            $('#mmm').html(serializedArr);  
             
             var url2=PATH+'/ajax_func.php?func=sync&t='+t;
-                //alert(url2);
+                alert(url2);
                 $.getJSON( url2, function( data ) 
                 {
                     //alert(data.delta);
@@ -394,7 +394,7 @@ $( document ).ready(function()
             if (id_exp==undefined) {id_exp=0;}
             $('#id_exp').val(id_exp);
             
-            //alert(id_exp);
+            alert(id_exp);
             
             var huser=location.hash;
             z=huser.split('#');
@@ -419,7 +419,7 @@ $( document ).ready(function()
                         }
                 });
                 
-                debug('user='+id_user);
+                alert('user='+id_user);
                 
                 // var id_exp=$('#id_exp').val(); 
                 //url=PATH+'/ajax_func.php?path='+PATH+'&func=get_tests&id='+id_user+'&id_exp='+id_exp;

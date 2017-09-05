@@ -30,11 +30,11 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('app', this.onDeviceReady.bind(this), false);
-        var ht=document.getElementById("htmlid");  
-        ch=ht.clientHeight;  
-        cw=ht.clientWidth; 
+        //var ht=document.getElementById("htmlid");  
+        //ch=ht.clientHeight;  
+        //cw=ht.clientWidth; 
         //alert(hh);       
-        document.getElementById("page1").style.height=ch+'px';                       
+        //document.getElementById("page1").style.height=ch+'px';                       
         
         /*
         document.getElementById("map").style.width=cw+'px';        
