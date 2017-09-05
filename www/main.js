@@ -393,7 +393,9 @@ $( document ).ready(function()
               setCookie('pr_send',pr_send);
                           
               var id_exp=$('#id_exp').val();            
-              $.post(PATH+'/ajax_func.php?func=send&check=1&id_exp='+id_exp, {q1: serializedArr})
+              var url2=PATH+'/ajax_func.php?func=send&check=1&id_exp='+id_exp;
+              //alert(url2);
+              $.post(url2, {q1: serializedArr})
                 .done(function( data ) 
                 {
                       //alert(data);
@@ -413,6 +415,8 @@ $( document ).ready(function()
                     url=PATH+'/ajax_func.php?path='+PATH+'&func=check&id_exp='+id_exp+'&by_act=1';
                     //alert(url);
                     $.getJSON(url, function( data ) {
+                        if (data!=null)
+                        {
                         s12 = JSON.stringify(data);
                         //alert(s12);
                         if (data.S1!=undefined) {activity.S1_fact=data.S1.fact;}
@@ -429,7 +433,13 @@ $( document ).ready(function()
                           //alert(serializedArr);
                         setCookie('activity',serAct);
                         show_time_all();
-                        
+                        }
+                        else 
+                      {
+                          pr_send=0;
+                          setCookie('pr_send',pr_send);
+                          alert('На сервере пусто, попробуйте позже.');
+                      }
                         
                     });                                        
                       
@@ -438,7 +448,7 @@ $( document ).ready(function()
                       else 
                       {
                           pr_send=0;
-                          sendCookie('pr_send',pr_send);
+                          setCookie('pr_send',pr_send);
                           alert('На сервере что-то не так, попробуйте позже.');
                       }
                 });
