@@ -416,7 +416,8 @@ $( document ).ready(function()
               
             $('.exp1').bind("click", function()
             {   
-                if ($(this).linkbutton('disabled')==false)
+                alert($(this).linkbutton('disabled'));
+                
                 {
                 
                 cmd=$(this).attr('cmd');
