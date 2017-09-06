@@ -335,7 +335,7 @@ function stopTest()
               
               
                
-                    
+              $('.exp1').linkbutton('enable');      
               $('#bstart').show();
               $('#bstop').hide();  
               pr='';
@@ -610,7 +610,7 @@ $( document ).ready(function()
            //setCookie('results',serializedArr);
                       
         //$.get(PATH+'/mobile.php?id='+id_user+'&act=start&test='+current_test+'&id_exp='+id_exp);  
-        
+        $('.exp1').linkbutton('disable');
         $('#bstart').hide();
         $('#bstop').show();
         $('#save').show();
