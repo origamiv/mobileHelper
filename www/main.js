@@ -1,3 +1,10 @@
+            var activity = new Object;
+            var serAct = '';      
+            var results =new Array;
+            var serializedArr ='';
+            var i=0;            
+            var cmd ='';
+
 function del_activity()
 {
             activity.S1=0;
@@ -92,18 +99,8 @@ function debug(istr)
 $( document ).ready(function() 
         {
             
-            var activity = new Object;
-            var serAct = ''; 
-            
-           //var i_act=0;
-             
-            debug('start');
-            var results =new Array;
-            var serializedArr ='';
-            var i=0;
-            
-            var cmd ='';
-            
+
+                        
             serializedArr=getCookie('results');               
             serAct=getCookie('activity');
             debug('start2');
