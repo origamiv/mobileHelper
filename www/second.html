@@ -18,13 +18,13 @@
        <script src="common.js"></script>       
         <title>Mobile Helper</title>
     </head>
-    <body>         
+    <body>                         
         <div style="height: 30px;padding-bottom: 15px;">
             <table style="width: 100%;">
-            <tr><td><span style="float: left; font-size: 12pt; font-weight: bold;">Personal Trener</span></td>
-            <td>
-            <a id='del' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Удалить</a>
-            <a id='save' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Сохранить</a>
+            <tr><td><span style="float: left; font-size: 12pt; font-weight: bold;">Активный Эксперимент</span></td>
+            <td>            
+            <!--a id='check' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" title="Проверить"></a-->
+            <a id='save' style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Закончить</a>
             </td>
             </tr>
             </table>
@@ -39,19 +39,21 @@
         
              
              <div style="margin: 10px;">
-             <input id="experiment">
-             <script type="text/javascript">
-             //alert(PATH);
-             $('#experiment').combobox({
-                    url: PATH+'/ajax_func.php?func=trainings',
-                    method:'get',
-                    valueField: 'id',
-                    textField: 'text',
-                    label: 'Эксперимент:',
-                    labelPosition: 'center',
-                    width: '250px'
-             });
-             </script>            
+             
+    <div style="margin:5px 0">
+        <a class="easyui-linkbutton exp1" cmd='S1' style="width:60px">Стоять</a>
+        <a class="easyui-linkbutton exp1" cmd='S2' style="width:60px">Сидеть</a>
+        <a class="easyui-linkbutton exp1" cmd='S3' style="width:60px">Лежать</a>
+        <a class="easyui-linkbutton exp1" cmd='D1' style="width:60px">Идти</a>
+        <a class="easyui-linkbutton exp1" cmd='D2' style="width:60px">Бежать</a>
+    </div>    
+    <div style="margin:10px 0">        
+        <a class="easyui-linkbutton exp1" cmd='D3' style="width:60px">Лест. ↑</a>
+        <a class="easyui-linkbutton exp1" cmd='D4' style="width:60px">Лест. ↓</a>
+        <a class="easyui-linkbutton exp1" cmd='D5' style="width:60px">Лифт ↑</a>
+        <a class="easyui-linkbutton exp1" cmd='D6' style="width:60px">Лифт ↓</a>
+    </div>               
+                       
              </div>           
              <p id="ptime" style="background-color: #c0cfe8; width:100%;padding:5px;">Времени прошло:<b id="timeleft">10 мин 23 сек</b></p>
              <br>
@@ -85,12 +87,14 @@
              <input type="hidden" name="timetest" id="timetest" value="0">
              <input type="hidden" name="hiduser" id="hiduser" value="0">
              <input type="hidden" name="id_exp" id="id_exp" value="0">             
+             <input type="hidden" name="lref" id="lref" value=""> 
         </div>     
         
     
     
         <div data-options="title:'Результаты'" style="height:40px;background:white;padding:10px;">         
         <p id="layres">Результатов пока нет.</p>
+        <!--p id="laylink" style="text-decoration: underline; color: blue;">Обновить</p-->
         </div>
         
     
@@ -99,13 +103,16 @@
     <div id="duser" data-options="" style="height:40px;background:white;padding:10px;">    
             Тесты выполняет
     </div> 
+    
+    <div id="mmm" style="background-color: yellow; width: 300px; height:100px; overflow: scroll;">кукисы</div>
         
+       
            
         <div class='app' style='display: none;'> </div>
-        <script type="text/javascript" src="cordova.js"></script>
+        
+    <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="main.js"></script>
-
 
 </body>
 </html>
