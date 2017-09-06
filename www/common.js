@@ -64,7 +64,7 @@ function setCookie(name, value, options)
 
 //alert('111');  
 //PORT=80;
-PATH='http://tvard.skladovka.ru:8081/source';
-PATH2='http://192.168.1.145/source';
+PATH2='http://tvard.skladovka.ru:8081/source';
+PATH='http://192.168.1.145/source';
 
 //PATH=PATH2;
