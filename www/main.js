@@ -226,7 +226,7 @@ function show_time_all()
                      iconCls: 'icon-cancel'
                 });
                          
-                $('#mmm').html(serializedArr);
+                //$('#mmm').html(serializedArr);
                 //alert(z);
 }
                   
@@ -356,7 +356,7 @@ $( document ).ready(function()
             t=Date.now();            
             debug('time='+t);
 
-            $('#mmm').html(serializedArr);  
+            $('#mmm').hide(); //html(serializedArr);  
             
             var url2=PATH+'/ajax_func.php?func=sync&t='+t;
                 //alert(url2);
