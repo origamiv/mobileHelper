@@ -527,7 +527,7 @@ $( document ).ready(function()
               //alert(serializedArr);
                           
               var id_exp=$('#id_exp').val();            
-              $.post(PATH+'/ajax_func.php?func=send&id_exp='+id_exp, {q1: serializedArr})
+              $.post(PATH+'/ajax_func.php?func=send&check=1&id_exp='+id_exp, {q1: serializedArr})
                 .done(function( data ) 
                 {
                       //alert(data);
