@@ -1,4 +1,6 @@
 $( document ).ready(function() 
+        {
+            
             var activity = new Object;
             var serAct = ''; 
             var results =new Array;
@@ -10,7 +12,7 @@ $( document ).ready(function()
             var pr='';
             var pr_send=0;
             var id_user_cookie=0;
-
+            
 
 function sleep(ms) 
 {
@@ -116,7 +118,7 @@ function activity_time(min, sec)
               //alert(serAct);
             setCookie('activity',serAct);
             }
-          
+            
 function del()
 {
     serializedArr='';
@@ -236,133 +238,66 @@ function show_time_all()
                 //alert(z);
 }
                   
+
 function debug(istr)
 {    
 //alert(istr);
 }
-    
-function check()
-{
-              //alert(serializedArr);
-              pr_send=0;
-              setCookie('pr_send',pr_send);
-                          
-              var id_exp=$('#id_exp').val();            
-              var url2=PATH+'/ajax_func.php?func=check_data_integrity&id_exp='+id_exp;
-              //alert(url2);
-              $.post(url2, {json_data: serializedArr})
-                .done(function( data1 ) 
-                {
-                      //data=data1[0];
-                      //alert(data1);
-                      data2=JSON.parse(data1);
-                      
-                      
-                      $.each( data2, function( key, data ) {
-                           //alert(data.cmd);
-                      if (data!=null)
-                      {                                                                
-                        pr_send=1;
-                        s12 = JSON.stringify(data);
-                        //alert(JSON.stringify(data.D3));
-                        if (data.cmd=='S1') {activity.S1_fact=data.fact;}
-                        if (data.cmd=='S2') {activity.S2_fact=data.fact;}
-                        if (data.cmd=='S3') {activity.S3_fact=data.fact;}
-                        if (data.cmd=='D1') {activity.D1_fact=data.fact;}
-                        if (data.cmd=='D2') {activity.D2_fact=data.fact;}
-                        if (data.cmd=='D3') {activity.D3_fact=data.fact;}
-                        if (data.cmd=='D4') {activity.D4_fact=data.fact;}
-                        if (data.cmd=='D5') {activity.D5_fact=data.fact;}  
-                        if (data.cmd=='D6') {activity.D6_fact=data.fact;}  
-                        
-                        serAct = JSON.stringify(activity);
-                          //alert('sa'+serializedArr);
-                        setCookie('activity',serAct);
-                        show_time_all();
-                      //alert('ok');
-                      }
-                else 
-                    {
-                        pr_send=0;
-                        setCookie('pr_send',pr_send);
-                        alert('На сервере пусто, попробуйте позже.');
-                    }
-                      });
-                      
-                      //data=data2[0];
-                      
-                }
-                );
-                
-                pr_send=getCookie('pr_send');
-                if (pr_send==1)
-                {
-                
-                
-                }   
-            
-                  
-
-                
-                    
-                    
-              
-        }    
-            
-function stopTest() 
-{
-    if (pr=='end')
-    {
-              clearInterval(timerId);
-              
-              min=0; 
-              sec=0;
-              $('#sec').html(sec);
-              $('#min').html(min);
-              
-              //alert(i);
-              
-              results[i].stop=Date.now();
-              i=i+1;
-              results_to_cookie();
-              
-              //alert(activity);
-              activity_time(min, sec)
-            
-              show_time_all();
-              
-              //$.get(PATH+'/mobile.php?id='+id_user+'&act=stop&test='+current_test);  
-              //$('#sec').val(sec);
-              //alert(sec);
-              var audio = new Audio();
-              audio.preload = 'auto';
-              audio.src = 'mp3/1.mp3';
-              audio.play();
-              
-              
-               
-                    
-              $('#bstart').show();
-              $('#bstop').hide();  
-              pr='';
-    }
-}            
-//==============================================            
-$( document ).ready(function() 
-{
             //var i_act=0;
-            serializedArr='';
              
             debug('start');
-            results_from_cookie();            
-            cmd='S1';
-            show_time_all();
+            var results =new Array;
+            var serializedArr ='';
+            var i=0;
+            
+            var cmd ='';
+            
+            serializedArr=getCookie('results');               
+            serAct=getCookie('activity');
+            debug('start2');
+            //alert(serAct);
+            if (serAct!=undefined)
+            {
+            activity = JSON.parse(serAct);
+            }
+            else
+            {
+                del_activity();
+            }
+            debug('start3');
+            //
+            if (activity.S2==null) {del_activity();}
+            //show_time_all();
+            //alert(activity.S2);
+            
+            debug('cookie');                    
+            //alert(serializedArr);
+            if ((serializedArr!=undefined) && (serializedArr!=''))
+            { 
+            results = JSON.parse(serializedArr);
+            i=results.length;           
+            
+            //alert(i);
+            //alert(serAct);
+            $('#save').show();
+            $('#del').show();
+            }
+            else
+            {
+                $('#save').hide();
+                $('#del').hide();
+            }
+            
             $('#ptime').hide();
             
-            t=Date.now();            
+            var t=Date.now();
+            
             debug('time='+t);
-
-            $('#mmm').html(serializedArr);  
+            //alert(PATH);
+            //alert(t);
+            
+            
+            
             
             var url2=PATH+'/ajax_func.php?func=sync&t='+t;
                 //alert(url2);
