@@ -9,6 +9,7 @@
             var pr='';
             var pr_send=0;
             var id_user_cookie=0;
+            var isblock=false;
 
 
  function results_from_cookie()         
@@ -335,7 +336,8 @@ function stopTest()
               
               
                
-              $('.exp1').linkbutton('enable');      
+              $('.exp1').linkbutton('enable');
+              isblock=false;      
               $('#bstart').show();
               $('#bstop').hide();  
               pr='';
@@ -416,7 +418,10 @@ $( document ).ready(function()
               
             $('.exp1').bind("click", function()
             {   
+                if (isblock==false)
+                {
                 //var z=$(this).linkbutton('disabled');                               
+                //$()
                 //alert(z);
                 
                 cmd=$(this).attr('cmd');
@@ -475,7 +480,7 @@ $( document ).ready(function()
                     
                     debug('exp_click_end');
                     });
-                
+                }
                     
             });
             
@@ -615,6 +620,8 @@ $( document ).ready(function()
                       
         //$.get(PATH+'/mobile.php?id='+id_user+'&act=start&test='+current_test+'&id_exp='+id_exp);  
         $('.exp1').linkbutton('disable');
+        isblock=true;
+        
         $('#bstart').hide();
         $('#bstop').show();
         $('#save').show();
