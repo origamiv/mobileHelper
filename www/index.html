@@ -91,7 +91,9 @@
             {
                     var id_user=$('#id_user').val();
                     
-                    alert(PATH);
+                    //alert(PATH);
+                    if (id_user!='')
+                    {
                     $.get( PATH+'/ajax_func.php?func=user_by_id&id='+id_user, function( data ) {                    
                         //alert(data);
                         if (data=='[]')
@@ -104,6 +106,11 @@
                         }
                        //$('#reg').html(data);
                     });                                 
+                    }
+                    else 
+                    {
+                      alert('Введите хотя бы что-нибудь');  
+                    }
             }
         });
         
@@ -119,9 +126,16 @@
                     var ves=$('#ves').val();
                     var rost=$('#rost').val();
                     var device=$('#device').val();
-                    $.get(PATH+'/mobile_reg.php?fio='+fio+'&age='+age+'&ves='+ves+'&rost='+rost+'&device='+device, function( data ) {                    
+                    var url=PATH+'/mobile_reg.php?fio='+fio+'&age='+age+'&ves='+ves+'&rost='+rost+'&device='+device;
+                    //alert(url);
+                    $.get(url, function( data ) {                    
                        // alert(data );
-                       $('#reg').html(data);
+                       $('#reg').html('Ваш ID'+data);
+                       
+                       setTimeout(function(){
+                          document.location='second.html#user_'+data;   
+                       }, 3000); 
+                       
                     });
                 }
                 return false; //

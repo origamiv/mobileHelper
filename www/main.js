@@ -10,7 +10,7 @@
             var pr_send=0;
             var id_user_cookie=0;
 
-       
+
  function results_from_cookie()         
 {
             serializedArr=getCookie('results');               
