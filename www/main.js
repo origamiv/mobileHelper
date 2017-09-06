@@ -5,6 +5,59 @@
             var i=0;            
             var cmd ='';
 
+            
+function sleep(ms) 
+{
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+           
+ function results_from_cookie()         
+{
+            serializedArr=getCookie('results');               
+            serAct=getCookie('activity');
+            //alert(serAct);
+            if (serAct!=undefined)
+            {
+            activity = JSON.parse(serAct);
+            }
+            else
+            {
+                del_activity();
+            }
+            //
+            if (activity.S2_must==null) {del_activity();}
+            
+            //alert(serializedArr);
+            if ((serializedArr!=undefined) && (serializedArr!=''))
+            { 
+            results = JSON.parse(serializedArr);
+            i=results.length;           
+            
+            //alert(i);
+            //alert(serializedArr);
+            for(j=0;j<i;j++)
+            {
+                id_user_cookie=results[j].id_user;
+                //alert(id_user_cookie);
+                if (id_user_cookie>0) {break;}
+            }
+            $('#save').show();
+            //$('#del').show();
+            }
+            else
+            {
+                $('#save').hide();
+                //$('#del').hide();
+            }
+}          
+
+function results_to_cookie()  
+{
+    serializedArr = JSON.stringify(results);
+    //alert(serializedArr);
+    setCookie('results',serializedArr);   
+}
+            
 function del_activity()
 {
             activity.S1=0;
