@@ -6,11 +6,7 @@
             var cmd ='';
 
             
-function sleep(ms) 
-{
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-           
+      
  function results_from_cookie()         
 {
             serializedArr=getCookie('results');               
