@@ -1,97 +1,19 @@
-$( document ).ready(function() 
-        {
-            
-            var activity = new Object;
-            var serAct = ''; 
-            var results =new Array;
-            var serializedArr ='';
-            var i=0;
-            var cmd ='';
-            var t=0;
-            var timerId;
-            var pr='';
-            var pr_send=0;
-            var id_user_cookie=0;
-            
-
-function sleep(ms) 
-{
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-           
- function results_from_cookie()         
-{
-            serializedArr=getCookie('results');               
-            serAct=getCookie('activity');
-            //alert(serAct);
-            if (serAct!=undefined)
-            {
-            activity = JSON.parse(serAct);
-            }
-            else
-            {
-                del_activity();
-            }
-            //
-            if (activity.S2_must==null) {del_activity();}
-            
-            //alert(serializedArr);
-            if ((serializedArr!=undefined) && (serializedArr!=''))
-            { 
-            results = JSON.parse(serializedArr);
-            i=results.length;           
-            
-            //alert(i);
-            //alert(serializedArr);
-            for(j=0;j<i;j++)
-            {
-                id_user_cookie=results[j].id_user;
-                //alert(id_user_cookie);
-                if (id_user_cookie>0) {break;}
-            }
-            $('#save').show();
-            //$('#del').show();
-            }
-            else
-            {
-                $('#save').hide();
-                //$('#del').hide();
-            }
-}          
-
-function results_to_cookie()  
-{
-    serializedArr = JSON.stringify(results);
-    //alert(serializedArr);
-    setCookie('results',serializedArr);   
-}
-           
 function del_activity()
 {
-            activity.S1_must=0;
-            activity.S2_must=0;
-            activity.S3_must=0;
-            activity.D1_must=0;
-            activity.D2_must=0;
-            activity.D3_must=0;
-            activity.D4_must=0;
-            activity.D5_must=0;
-            activity.D6_must=0;
-            
-            activity.S1_fact=0;
-            activity.S2_fact=0;
-            activity.S3_fact=0;
-            activity.D1_fact=0;
-            activity.D2_fact=0;
-            activity.D3_fact=0;
-            activity.D4_fact=0;
-            activity.D5_fact=0;
-            activity.D6_fact=0;
+            activity.S1=0;
+            activity.S2=0;
+            activity.S3=0;
+            activity.D1=0;
+            activity.D2=0;
+            activity.D3=0;
+            activity.D4=0;
+            activity.D5=0;
+            activity.D6=0;
             
             serAct = JSON.stringify(activity);
               //alert(serializedArr);
             setCookie('activity',serAct);  
-            //alert('Куки очищены');
+            alert('ok');
             }
             
 function activity_time(min, sec)
@@ -104,47 +26,33 @@ function activity_time(min, sec)
             
             //alert(cmd +' - '+activity.S2+' - '+t1);
             
-            if (cmd=='S1') {activity.S1_must=activity.S1_must+t1;}
-            if (cmd=='S2') {activity.S2_must=activity.S2_must+t1;}
-            if (cmd=='S3') {activity.S3_must=activity.S3_must+t1;}
-            if (cmd=='D1') {activity.D1_must=activity.D1_must+t1;}
-            if (cmd=='D2') {activity.D2_must=activity.D2_must+t1;}
-            if (cmd=='D3') {activity.D3_must=activity.D3_must+t1;}
-            if (cmd=='D4') {activity.D4_must=activity.D4_must+t1;}
-            if (cmd=='D5') {activity.D5_must=activity.D5_must+t1;}            
-            if (cmd=='D6') {activity.D6_must=activity.D6_must+t1;}  
+            if (cmd=='S1') {activity.S1=activity.S1+t1;}
+            if (cmd=='S2') {activity.S2=activity.S2+t1;}
+            if (cmd=='S3') {activity.S3=activity.S3+t1;}
+            if (cmd=='D1') {activity.D1=activity.D1+t1;}
+            if (cmd=='D2') {activity.D2=activity.D2+t1;}
+            if (cmd=='D3') {activity.D3=activity.D3+t1;}
+            if (cmd=='D4') {activity.D4=activity.D4+t1;}
+            if (cmd=='D5') {activity.D5=activity.D5+t1;}            
+            if (cmd=='D6') {activity.D6=activity.D6+t1;}  
             
             serAct = JSON.stringify(activity);
-              //alert(serAct);
+              //alert(serializedArr);
             setCookie('activity',serAct);
             }
             
-function del()
-{
-    serializedArr='';
-    setCookie('results','');  
-    results = []; //JSON.parse(serializedArr);
-
-    del_activity();
-    //show_time_all();
-
-    i=0;
-    $('#save').hide();
-    show_time_all();                       
-}
-          
 function show_time_all()
 {
-                //alert(cmd);
-                if (cmd=='S1') {t1=activity.S1_must;}
-                if (cmd=='S2') {t1=activity.S2_must;}
-                if (cmd=='S3') {t1=activity.S3_must;}
-                if (cmd=='D1') {t1=activity.D1_must;}
-                if (cmd=='D2') {t1=activity.D2_must;}
-                if (cmd=='D3') {t1=activity.D3_must;}
-                if (cmd=='D4') {t1=activity.D4_must;}
-                if (cmd=='D5') {t1=activity.D5_must;} 
-                if (cmd=='D6') {t1=activity.D6_must;} 
+                
+                if (cmd=='S1') {t1=activity.S1;}
+                if (cmd=='S2') {t1=activity.S2;}
+                if (cmd=='S3') {t1=activity.S3;}
+                if (cmd=='D1') {t1=activity.D1;}
+                if (cmd=='D2') {t1=activity.D2;}
+                if (cmd=='D3') {t1=activity.D3;}
+                if (cmd=='D4') {t1=activity.D4;}
+                if (cmd=='D5') {t1=activity.D5;} 
+                if (cmd=='D6') {t1=activity.D6;} 
                 
                 //alert(t1);
                 if (t1==undefined) {t1=0;}
@@ -155,95 +63,39 @@ function show_time_all()
                     
                 $('#timeleft').html(minall+' мин '+secall+' сек ');  
                 
-                var timestr='<table>';
-                timestr=timestr+'<tr><td>Активность</td><td>Время</td><td>Факт</td>';
-                timestr=timestr+'<td><a id="del" onclick="del();" style="float: right;" class="delall" title="Удалить все на хрен!">Удалить все</a>'+'</td></tr>';
+                var timestr='<table>'+
+                '<tr><td>S1 Стоит</td><td>'+activity.S1+'</td></tr>'+
+                '<tr><td>S2 Сидит</td><td>'+activity.S2+'</td></tr>'+
+                '<tr><td>S3 Лежит</td><td>'+activity.S3+'</td></tr>'+
+                '<tr><td>D1 Идет</td><td>'+activity.D1+'</td></tr>'+
+                '<tr><td>D2 Бежит</td><td>'+activity.D2+'</td></tr>'+
+                '<tr><td>D3 Подъем по лестнице</td><td>'+activity.D3+'</td></tr>'+
+                '<tr><td>D4 Спуск по лестнице</td><td>'+activity.D4+'</td></tr>'+
+                '<tr><td>D5 Подъем на лифте</td><td>'+activity.D5+'</td></tr>'+
+                '<tr><td>D6 Спуск на лифте</td><td>'+activity.D6+'</td></tr>'+
+                '</table>';
                 
-                style_green='background-color:green;color:yellow;text-align:center';
-                style_red='background-color:red;color:yellow;text-align:center';
-                style_yell='background-color:yellow;color:black;text-align:center';
                 
-                if (activity.S1_must==0) {style1='';} 
-                else if ((activity.S1_must-activity.S1_fact)>1) {style1=style_yell;} 
-                else if (activity.S1_must<activity.S1_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>S1 Стоит</td><td style="'+style1+'">'+activity.S1_must+'</td><td style="'+style1+'">'+activity.S1_fact+'</td><td><a activity="S1" class="delact">Удалить</a></td></tr>';                                                               
-                
-                if (activity.S2_must==0) {style1='';} 
-                else if ((activity.S2_must-activity.S2_fact)>1) {style1=style_yell;} 
-                else if (activity.S2_must<activity.S2_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>S2 Сидит</td><td style="'+style1+'">'+activity.S2_must+'</td><td style="'+style1+'">'+activity.S2_fact+'</td><td><a activity="S2" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.S3_must==0) {style1='';} 
-                else if ((activity.S3_must-activity.S3_fact)>1) {style1=style_yell;} 
-                else if (activity.S3_must<activity.S3_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>S3 Лежит</td><td style="'+style1+'">'+activity.S3_must+'</td><td style="'+style1+'">'+activity.S3_fact+'</td><td><a activity="S3" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D1_must==0) {style1='';} 
-                else if ((activity.D1_must-activity.D1_fact)>1) {style1=style_yell;} 
-                else if (activity.D1_must<activity.D1_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D1 Идет</td><td style="'+style1+'">'+activity.D1_must+'</td><td style="'+style1+'">'+activity.D1_fact+'</td><td><a activity="D1" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D2_must==0) {style1='';} 
-                else if ((activity.D2_must-activity.D2_fact)>1) {style1=style_yell;} 
-                else if (activity.D2_must<activity.D2_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D2 Бежит</td><td style="'+style1+'">'+activity.D2_must+'</td><td style="'+style1+'">'+activity.D2_fact+'</td><td><a activity="D2" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D3_must==0) {style1='';} 
-                else if ((activity.D3_must-activity.D3_fact)>1) {style1=style_yell;} 
-                else if (activity.D3_must<activity.D3_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D3 Подъем по лестнице</td><td style="'+style1+'">'+activity.D3_must+'</td><td style="'+style1+'">'+activity.D3_fact+'</td><td><a activity="D3" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D4_must==0) {style1='';} 
-                else if ((activity.D4_must-activity.D4_fact)>1) {style1=style_yell;} 
-                else if (activity.D4_must<activity.D4_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D4 Спуск по лестнице</td><td style="'+style1+'">'+activity.D4_must+'</td><td style="'+style1+'">'+activity.D4_fact+'</td><td><a activity="D4" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D5_must==0) {style1='';} 
-                else if ((activity.D5_must-activity.D5_fact)>1) {style1=style_yell;} 
-                else if (activity.D5_must<activity.D5_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D5 Подъем на лифте</td><td style="'+style1+'">'+activity.D5_must+'</td><td style="'+style1+'">'+activity.D5_fact+'</td><td><a activity="D5" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D6_must==0) {style1='';} 
-                else if ((activity.D6_must-activity.D6_fact)>1) {style1=style_yell;} 
-                else if (activity.D6_must<activity.D6_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D6 Спуск на лифте</td><td style="'+style1+'">'+activity.D6_must+'</td><td style="'+style1+'">'+activity.D6_fact+'</td><td><a activity="D6" class="delact">Удалить</a></td></tr>';
-                
-                timestr=timestr+'</table>';  
-                
-               
-                                   
-                                   
                 var tab = $('#tabs').tabs('getTab',1);  // get selected panel
                 
                 $('#layres').html(timestr);
-                
-                $('.delact').linkbutton({
-                     iconCls: 'icon-remove'
-                });
-                
-                $('.delall').linkbutton({
-                     iconCls: 'icon-cancel'
-                });
-                         
-                $('#mmm').html(serializedArr);
                 //alert(z);
 }
                   
 
 function debug(istr)
 {    
-//alert(istr);
+  alert(istr);
 }
-            //var i_act=0;
+ 
+ 
+$( document ).ready(function() 
+        {
+            
+            var activity = new Object;
+            var serAct = ''; 
+            
+           //var i_act=0;
              
             debug('start');
             var results =new Array;
