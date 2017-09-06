@@ -416,9 +416,8 @@ $( document ).ready(function()
               
             $('.exp1').bind("click", function()
             {   
-                alert($(this).linkbutton('disabled'));
-                
-                {
+                var z=$(this).linkbutton('disabled');                               
+                alert(z);
                 
                 cmd=$(this).attr('cmd');
                 
@@ -477,7 +476,7 @@ $( document ).ready(function()
                     debug('exp_click_end');
                     });
                 
-                }    
+                    
             });
             
             
