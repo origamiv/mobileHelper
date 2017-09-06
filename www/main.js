@@ -416,6 +416,9 @@ $( document ).ready(function()
               
             $('.exp1').bind("click", function()
             {   
+                if ($(this).linkbutton('disabled')==false)
+                {
+                
                 cmd=$(this).attr('cmd');
                 
                 url=PATH+'/ajax_func.php?func=trainings&cmd='+cmd;
@@ -472,7 +475,8 @@ $( document ).ready(function()
                     
                     debug('exp_click_end');
                     });
-                    
+                
+                }    
             });
             
             
