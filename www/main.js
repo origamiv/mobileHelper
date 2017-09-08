@@ -372,8 +372,8 @@ $( document ).ready(function()
             
             var d=getCookie('delta');
             
-            id_exp=getCookie('id_exp');
-            if (id_exp==undefined) {id_exp=0;}
+            id_exp=0; //getCookie('id_exp');
+            //if (id_exp==undefined) {id_exp=0;}
             $('#id_exp').val(id_exp);
             
             //alert(id_exp);
@@ -393,15 +393,15 @@ $( document ).ready(function()
                 {
                         $('#duser').html('Тесты выполняет '+data[0].fio);
                         //alert(data[0].id_exp);
-                        if ($('#id_exp').val()==0)
-                        {
+                        //if ($('#id_exp').val()==0)
+                        //{
                         $('#id_exp').val(data[0].id_exp);
                         id_exp=$('#id_exp').val();
-                        setCookie('id_exp',id_exp);
-                        }
+                        //setCookie('id_exp',id_exp);
+                        //}
                 });
                 
-                //alert('user='+id_user+'-'+id_user_cookie);
+                alert('user='+id_user+'-'+id_exp);
                 
                 // var id_exp=$('#id_exp').val(); 
                 //url=PATH+'/ajax_func.php?path='+PATH+'&func=get_tests&id='+id_user+'&id_exp='+id_exp;
