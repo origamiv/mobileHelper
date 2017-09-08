@@ -396,12 +396,13 @@ $( document ).ready(function()
                         //if ($('#id_exp').val()==0)
                         //{
                         $('#id_exp').val(data[0].id_exp);
-                        id_exp=$('#id_exp').val();
+                        id_exp=$('#id_exp').val();  
+                        //alert('user='+id_user+'-'+id_exp);
                         //setCookie('id_exp',id_exp);
                         //}
                 });
                 
-                alert('user='+id_user+'-'+id_exp);
+                
                 
                 // var id_exp=$('#id_exp').val(); 
                 //url=PATH+'/ajax_func.php?path='+PATH+'&func=get_tests&id='+id_user+'&id_exp='+id_exp;
