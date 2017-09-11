@@ -130,11 +130,18 @@
                     //alert(url);
                     $.get(url, function( data ) {                    
                        // alert(data );
-                       $('#reg').html('Ваш ID'+data);
+                       if (data>0)
+                       {
+                            $('#reg').html('Ваш ID'+data);
                        
-                       setTimeout(function(){
-                          document.location='second.html#user_'+data;   
-                       }, 3000); 
+                            setTimeout(function(){
+                                document.location='second.html#user_'+data;   
+                            }, 3000); 
+                       }
+                       else 
+                       {
+                           alert('Регистрация не прошла');
+                       }
                        
                     });
                 }
