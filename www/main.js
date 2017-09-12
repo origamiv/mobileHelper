@@ -215,9 +215,9 @@ function check()
     var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
     //alert(url4);
     
-    $.ajaxSetup({
-async: false
-});
+//    $.ajaxSetup({
+//async: false
+//});
     
     $.getJSON(url4, function(data4)
     {
@@ -226,7 +226,7 @@ async: false
         localStorage.batt1 = data4.voltage1;
         localStorage.batt2 = data4.voltage2;
         alert('LS'+localStorage.device_time);
-    });
+    
     
     
     pr_send = 0;
@@ -275,9 +275,11 @@ async: false
 
     pr_send = getCookie('pr_send');    
     
-    $.ajaxSetup({
-async: true
-});
+//    $.ajaxSetup({
+//async: true
+//});
+
+    });
 }
 
 function stopTest()
