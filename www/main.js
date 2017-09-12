@@ -31,7 +31,7 @@ function results_from_cookie()
     {
         del_activity();
     }
-
+     alert('1');
     //alert(serializedArr);
     if ((serializedArr != undefined) && (serializedArr != ''))
     {
@@ -47,10 +47,12 @@ function results_from_cookie()
             }
         }
         $('#save').show();
+        alert('2');
     }
     else
     {
         $('#save').hide();
+        alert('3');
     }
 }
 
