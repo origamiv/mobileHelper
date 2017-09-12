@@ -10,6 +10,7 @@
             var pr_send=0;
             var id_user_cookie=0;
             var isblock=false;
+            var device_id=0;
 
 
  function results_from_cookie()         
@@ -199,7 +200,8 @@ function debug(istr)
     
 function check()
 {
-                var url2=PATH+'/ajax_func.php?func=device_data&id=7';
+    
+                var url2=PATH+'/ajax_func.php?func=device_data&id='+device_id;
                 //alert(url2);
                 $.getJSON( url2, function( data ) 
                 {
@@ -363,9 +365,10 @@ $( document ).ready(function()
                 $.getJSON( url2, function( data ) 
                 {
                         
-                        //alert(data[0].id_exp);
+                        //alert(data[0].device_id);
                         //if ($('#id_exp').val()==0)
                         //{
+                        device_id=data[0].device_id;
                         $('#id_exp').val(data[0].id_exp);
                         id_exp=$('#id_exp').val();  
                         //alert('user='+id_user+'-'+id_exp);
