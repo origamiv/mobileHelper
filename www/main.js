@@ -163,7 +163,7 @@ function show_time_all()
         must = cmd2 + '_must';
         fact = cmd2 + '_fact';
 
-        alert(activity[must]+'  '+activity[fact]);
+        //alert(activity[must]+'  '+activity[fact]);
         if (activity[must] == 0)
         {
             style1 = style_def;
