@@ -154,10 +154,30 @@ function show_time_all()
     timestr = timestr + '<tr><td>Батарея</td><td style="' + style_def + '">' + localStorage.batt1 + '</td><td style="' + style_def + '">' + localStorage.batt2 + '</td></tr>';
 
     alert('22');
+    alert(localStorage.trainings);
     trainings = JSON.parse(localStorage.trainings);
     for (cmd2 in trainings)
     { 
-        alert(cmd2)
+                must = cmd2 + '_must';
+        fact = cmd2 + '_fact';
+
+        alert(activity[must]+'  '+activity[fact]);
+        if (activity[must] == 0)
+        {
+            style1 = style_def;
+        }
+        else if ((activity[must] - activity[fact]) > 1)
+        {
+            style1 = style_yell;
+        }
+        else if (activity[must] <= activity[fact])
+        {
+            style1 = style_green;
+        }
+
+        alert('22-2');
+        timestr = timestr + '<tr><td>' + cmd2 + ' ' + trainings[cmd2]['text'] + '</td><td style="' + style1 + '">' + activity[must] + '</td>';
+        timestr = timestr + '<td style="' + style1 + '">' + activity[fact] + '</td><td><a activity="' + cmd2 + '" class="delact">Удалить</a></td></tr>';
 
     }
 
@@ -284,7 +304,7 @@ $(document).ready(function()
     debug('start');
     results_from_cookie();
     cmd = 'S1';
-    show_time_all();
+    
     $('#ptime').hide();
 
     t = Date.now();
@@ -334,6 +354,8 @@ $(document).ready(function()
     {
         localStorage.trainings = JSON.stringify(data);
     });
+
+    show_time_all();
     //==============================================
 
 
