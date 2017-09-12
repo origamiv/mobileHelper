@@ -358,9 +358,10 @@ $(document).ready(function()
         localStorage.trainings = JSON.stringify(data);
         //alert(localStorage.trainings);
         //alert('dddd');
+        show_time_all();
     });
 
-    show_time_all();
+    
     //==============================================
 
 
