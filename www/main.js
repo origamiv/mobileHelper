@@ -154,11 +154,12 @@ function show_time_all()
     timestr = timestr + '<tr><td>Батарея</td><td style="' + style_def + '">' + localStorage.batt1 + '</td><td style="' + style_def + '">' + localStorage.batt2 + '</td></tr>';
 
     alert('22');
-    alert(localStorage.trainings);
+    
     trainings = JSON.parse(localStorage.trainings);
+    alert(localStorage.trainings);
     for (cmd2 in trainings)
     { 
-                must = cmd2 + '_must';
+        must = cmd2 + '_must';
         fact = cmd2 + '_fact';
 
         alert(activity[must]+'  '+activity[fact]);
