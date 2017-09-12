@@ -213,15 +213,24 @@ function check()
     if (cmd==undefined) {cmd='S1';}
     t00 = Date.now();
     var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
+    alert(url4);
+    
+    $.ajaxSetup({
+async: false
+});
+    
     $.getJSON(url4, function(data4)
     {
-        //alert(data4.device_time);
+        alert(data4.device_time);
         localStorage.device_time = data4.device_time;
         localStorage.batt1 = data4.voltage1;
         localStorage.batt2 = data4.voltage2;
+    });
+    
     
     pr_send = 0;
     setCookie('pr_send', pr_send);
+    
 
     var id_exp = $('#id_exp').val();
     var url2 = PATH + '/ajax_func.php?func=check_data_integrity&id_exp=' + id_exp;
@@ -261,7 +270,9 @@ function check()
 
     pr_send = getCookie('pr_send');    
     
-    });
+    $.ajaxSetup({
+async: true
+});
 }
 
 function stopTest()
