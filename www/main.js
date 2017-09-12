@@ -211,13 +211,13 @@ function debug(istr)
 function check()
 {
 
-    var url2 = PATH + '/ajax_func.php?func=device_data&id=' + device_id;
-    $.getJSON(url2, function(data)
+    var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id;
+    $.getJSON(url4, function(data4)
     {
-        localStorage.device_time = data.device_time;
-        localStorage.batt1 = data.voltage1;
-        localStorage.batt2 = data.voltage2;
-    });
+        localStorage.device_time = data4.device_time;
+        localStorage.batt1 = data4.voltage1;
+        localStorage.batt2 = data4.voltage2;
+    
     pr_send = 0;
     setCookie('pr_send', pr_send);
 
@@ -257,12 +257,9 @@ function check()
             });
         });
 
-    pr_send = getCookie('pr_send');
-    if (pr_send == 1)
-    {
-
-
-    }
+    pr_send = getCookie('pr_send');    
+    
+    });
 }
 
 function stopTest()
