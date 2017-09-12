@@ -213,7 +213,7 @@ function check()
     if (cmd==undefined) {cmd='S1';}
     t00 = Date.now();
     var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
-    alert(url4);
+    //alert(url4);
     
     $.ajaxSetup({
 async: false
@@ -221,10 +221,11 @@ async: false
     
     $.getJSON(url4, function(data4)
     {
-        alert(data4.device_time);
+        alert('DATA '+data4.device_time);
         localStorage.device_time = data4.device_time;
         localStorage.batt1 = data4.voltage1;
         localStorage.batt2 = data4.voltage2;
+        alert('LS'+localStorage.device_time);
     });
     
     
@@ -257,6 +258,7 @@ async: false
 
                     serAct = JSON.stringify(activity);
                     setCookie('activity', serAct);
+                    alert('STA'+localStorage.device_time);
                     show_time_all();
                 }
                 else
