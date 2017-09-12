@@ -118,7 +118,7 @@ function show_time_all()
 {
 
     //alert(localStorage.batt1);
-    alert(cmd);
+    //alert(cmd);
     if (cmd=='') {cmd='S1';}
     must = cmd + '_must';
     t1 = activity[must];
@@ -154,7 +154,7 @@ function show_time_all()
     timestr = timestr + '<tr><td>Время с каски</td><td colspan=2>' + localStorage.device_time + '</td></tr>';
     timestr = timestr + '<tr><td>Батарея</td><td style="' + style_def + '">' + localStorage.batt1 + '</td><td style="' + style_def + '">' + localStorage.batt2 + '</td></tr>';
 
-    alert('22');
+    //alert('22');
     
     trainings = JSON.parse(localStorage.trainings);
     if (localStorage.trainings!=false)
@@ -177,13 +177,13 @@ function show_time_all()
             style1 = style_green;
         }
 
-        alert('22-2');
+        //alert('22-2');
         timestr = timestr + '<tr><td>' + cmd2 + ' ' + trainings[cmd2]['text'] + '</td><td style="' + style1 + '">' + activity[must] + '</td>';
         timestr = timestr + '<td style="' + style1 + '">' + activity[fact] + '</td><td><a activity="' + cmd2 + '" class="delact">Удалить</a></td></tr>';
 
     }
 
-    alert('23');
+    //alert('23');
     timestr = timestr + '</table>';
 
     var tab = $('#tabs').tabs('getTab', 1); // get selected panel
@@ -199,13 +199,13 @@ function show_time_all()
     {
         iconCls: 'icon-cancel'
     });
-    alert('24');
+    //alert('24');
 
 }
 
 function debug(istr)
 {
-    alert(istr);
+ //   alert(istr);
 }
 
 function check()
@@ -354,10 +354,10 @@ $(document).ready(function()
     url = PATH + '/ajax_func.php?func=trainings&cmd=ALL';
     $.getJSON(url, function(data)
     {
-        alert(data);
+        //alert(data);
         localStorage.trainings = JSON.stringify(data);
-        alert(localStorage.trainings);
-        alert('dddd');
+        //alert(localStorage.trainings);
+        //alert('dddd');
     });
 
     show_time_all();
