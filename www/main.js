@@ -412,6 +412,20 @@ $( document ).ready(function()
             
             if (id_user!=id_user_cookie) {del();}
             
+            url=PATH+'/ajax_func.php?func=trainings&cmd=ALL';
+                $.getJSON(url, function( data) {                                     
+                   
+                   //alert(data.D1.pic);
+                   localStorage.trainings=JSON.stringify(data);                   
+                   
+                   //param=data[0];                                                
+                    });
+                    
+                    
+//==============================================
+            
+            
+            
             $('#exp').hide();
             //$('.pres').hide();
             $('#bstart').show();
@@ -426,17 +440,9 @@ $( document ).ready(function()
                 //alert(z);
                 
                 cmd=$(this).attr('cmd');
-                
-                url=PATH+'/ajax_func.php?func=trainings&cmd='+cmd;
-                $.getJSON(url, function( data) {
-                   param=data[0];
-                
-                
-                
-                //alert(cmd);
-       //         var param=new Object;
-//                    
-//                    
+                trainings=JSON.parse(localStorage.trainings);
+                param=trainings[cmd];
+
 //                    param.id = 2;
 //                    param.tim = 300;
 //                    param.pic='stay.jpg';
@@ -480,7 +486,7 @@ $( document ).ready(function()
                     show_time_all();
                     
                     debug('exp_click_end');
-                    });
+                
                 }
                     
             });
