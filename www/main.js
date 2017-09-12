@@ -11,6 +11,7 @@ var pr_send = 0;
 var id_user_cookie = 0;
 var isblock = false;
 var device_id = 0;
+localStorage.trainings=false;
 
 
 function results_from_cookie()
@@ -156,7 +157,7 @@ function show_time_all()
     alert('22');
     
     trainings = JSON.parse(localStorage.trainings);
-    alert(localStorage.trainings);
+    if (localStorage.trainings!=false)
     for (cmd2 in trainings)
     { 
         must = cmd2 + '_must';
