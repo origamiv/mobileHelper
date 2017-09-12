@@ -210,8 +210,8 @@ function debug(istr)
 
 function check()
 {
-
-    var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id;
+    t00 = Date.now();
+    var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
     $.getJSON(url4, function(data4)
     {
         localStorage.device_time = data4.device_time;
