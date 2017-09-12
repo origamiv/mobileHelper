@@ -156,10 +156,12 @@ function show_time_all()
     alert('22');
     trainings = JSON.parse(localStorage.trainings);
     for (cmd2 in trainings)
-    {
+    { 
+        alert(cmd2)
         must = cmd2 + '_must';
         fact = cmd2 + '_fact';
 
+        alert(activity[must]+'  '+activity[fact]);
         if (activity[must] == 0)
         {
             style1 = style_def;
@@ -173,6 +175,7 @@ function show_time_all()
             style1 = style_green;
         }
 
+         alert('22-2');
         timestr = timestr + '<tr><td>' + cmd2 + ' ' + trainings[cmd2]['text'] + '</td><td style="' + style1 + '">' + activity[must] + '</td>';
         timestr = timestr + '<td style="' + style1 + '">' + activity[fact] + '</td><td><a activity="' + cmd2 + '" class="delact">Удалить</a></td></tr>';
     }
