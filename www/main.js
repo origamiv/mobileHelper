@@ -243,23 +243,26 @@ async: false
         {
             data2 = JSON.parse(data1);
 
-
+            alert('0');
             $.each(data2, function(key, data)
             {
                 if (data != null)
                 {
+                    alert('1');
                     pr_send = 1;
-                    s12 = JSON.stringify(data);
+                    //s12 = JSON.stringify(data);
 
                     must = data.cmd + '_must';
                     fact = data.cmd + '_fact';
                     activity[fact] = data.fact;
-
+                    alert('2');
 
                     serAct = JSON.stringify(activity);
                     setCookie('activity', serAct);
                     alert('STA'+localStorage.device_time);
+                    alert('3');
                     show_time_all();
+                    alert('4');
                 }
                 else
                 {
