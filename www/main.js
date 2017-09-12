@@ -241,7 +241,7 @@ async: false
         })
         .done(function(data1)
         {
-            if (data!='No valid data')
+            if (data1!='No valid data')
             {
             data2 = JSON.parse(data1);
 
