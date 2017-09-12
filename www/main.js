@@ -128,18 +128,11 @@ function del()
           
 function show_time_all()
 {
-                //alert(cmd);
-                if (cmd=='S1') {t1=activity.S1_must;}
-                if (cmd=='S2') {t1=activity.S2_must;}
-                if (cmd=='S3') {t1=activity.S3_must;}
-                if (cmd=='D1') {t1=activity.D1_must;}
-                if (cmd=='D2') {t1=activity.D2_must;}
-                if (cmd=='D3') {t1=activity.D3_must;}
-                if (cmd=='D4') {t1=activity.D4_must;}
-                if (cmd=='D5') {t1=activity.D5_must;} 
-                if (cmd=='D6') {t1=activity.D6_must;} 
-                
-                //alert(t1);
+    
+    //alert(localStorage.batt1);
+                must=cmd+'_must';
+                t1=activity[must];
+                               
                 if (t1==undefined) {t1=0;}
                 if (t1==NaN) {t1=0;}
                 
@@ -149,71 +142,39 @@ function show_time_all()
                 $('#timeleft').html(minall+' мин '+secall+' сек ');  
                 
                 var timestr='<table>';
+                
+                
+                
                 timestr=timestr+'<tr><td>Активность</td><td>Время</td><td>Факт</td>';
                 timestr=timestr+'<td><a id="del" onclick="del();" style="float: right;" class="delall" title="Удалить все на хрен!">Удалить все</a>'+'</td></tr>';
                 
+                
+                
+                style_def='background-color:white;color:black;text-align:center';
                 style_green='background-color:green;color:yellow;text-align:center';
                 style_red='background-color:red;color:yellow;text-align:center';
                 style_yell='background-color:yellow;color:black;text-align:center';
                 
-                if (activity.S1_must==0) {style1='';} 
-                else if ((activity.S1_must-activity.S1_fact)>1) {style1=style_yell;} 
-                else if (activity.S1_must<=activity.S1_fact) {style1=style_green;}
+                timestr=timestr+'<tr><td>Время с каски</td><td colspan=2>'+localStorage.device_time+'</td></tr>';
+                timestr=timestr+'<tr><td>Батарея</td><td style="'+style_def+'">'+localStorage.batt1+'</td><td style="'+style_def+'">'+localStorage.batt2+'</td></tr>';
                 
-                timestr=timestr+'<tr><td>S1 Стоит</td><td style="'+style1+'">'+activity.S1_must+'</td><td style="'+style1+'">'+activity.S1_fact+'</td><td><a activity="S1" class="delact">Удалить</a></td></tr>';                                                               
+                trainings=JSON.parse(localStorage.trainings);
+                for (cmd2 in trainings)
+                {
+                //alert(cmd2);
+                must=cmd2+'_must';
+                fact=cmd2+'_fact';
                 
-                if (activity.S2_must==0) {style1='';} 
-                else if ((activity.S2_must-activity.S2_fact)>1) {style1=style_yell;} 
-                else if (activity.S2_must<=activity.S2_fact) {style1=style_green;}
+                if (activity[must]==0) {style1=style_def;} 
+                else if ((activity[must]-activity[fact])>1) {style1=style_yell;} 
+                else if (activity[must]<=activity[fact]) {style1=style_green;}
                 
-                timestr=timestr+'<tr><td>S2 Сидит</td><td style="'+style1+'">'+activity.S2_must+'</td><td style="'+style1+'">'+activity.S2_fact+'</td><td><a activity="S2" class="delact">Удалить</a></td></tr>';
+                timestr=timestr+'<tr><td>'+cmd2+' '+trainings[cmd2]['text']+'</td><td style="'+style1+'">'+activity[must]+'</td>';
+                timestr=timestr+'<td style="'+style1+'">'+activity[fact]+'</td><td><a activity="'+cmd2+'" class="delact">Удалить</a></td></tr>';  
                 
-                if (activity.S3_must==0) {style1='';} 
-                else if ((activity.S3_must-activity.S3_fact)>1) {style1=style_yell;} 
-                else if (activity.S3_must<=activity.S3_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>S3 Лежит</td><td style="'+style1+'">'+activity.S3_must+'</td><td style="'+style1+'">'+activity.S3_fact+'</td><td><a activity="S3" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D1_must==0) {style1='';} 
-                else if ((activity.D1_must-activity.D1_fact)>1) {style1=style_yell;} 
-                else if (activity.D1_must<activity.D1_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D1 Идет</td><td style="'+style1+'">'+activity.D1_must+'</td><td style="'+style1+'">'+activity.D1_fact+'</td><td><a activity="D1" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D2_must==0) {style1='';} 
-                else if ((activity.D2_must-activity.D2_fact)>1) {style1=style_yell;} 
-                else if (activity.D2_must<=activity.D2_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D2 Бежит</td><td style="'+style1+'">'+activity.D2_must+'</td><td style="'+style1+'">'+activity.D2_fact+'</td><td><a activity="D2" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D3_must==0) {style1='';} 
-                else if ((activity.D3_must-activity.D3_fact)>1) {style1=style_yell;} 
-                else if (activity.D3_must<=activity.D3_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D3 Подъем по лестнице</td><td style="'+style1+'">'+activity.D3_must+'</td><td style="'+style1+'">'+activity.D3_fact+'</td><td><a activity="D3" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D4_must==0) {style1='';} 
-                else if ((activity.D4_must-activity.D4_fact)>1) {style1=style_yell;} 
-                else if (activity.D4_must<=activity.D4_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D4 Спуск по лестнице</td><td style="'+style1+'">'+activity.D4_must+'</td><td style="'+style1+'">'+activity.D4_fact+'</td><td><a activity="D4" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D5_must==0) {style1='';} 
-                else if ((activity.D5_must-activity.D5_fact)>1) {style1=style_yell;} 
-                else if (activity.D5_must<=activity.D5_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D5 Подъем на лифте</td><td style="'+style1+'">'+activity.D5_must+'</td><td style="'+style1+'">'+activity.D5_fact+'</td><td><a activity="D5" class="delact">Удалить</a></td></tr>';
-                
-                if (activity.D6_must==0) {style1='';} 
-                else if ((activity.D6_must-activity.D6_fact)>1) {style1=style_yell;} 
-                else if (activity.D6_must<=activity.D6_fact) {style1=style_green;}
-                
-                timestr=timestr+'<tr><td>D6 Спуск на лифте</td><td style="'+style1+'">'+activity.D6_must+'</td><td style="'+style1+'">'+activity.D6_fact+'</td><td><a activity="D6" class="delact">Удалить</a></td></tr>';
-                
-                timestr=timestr+'</table>';  
-                
-               
-                                   
+                }
+                                
+                timestr=timestr+'</table>';                                                                   
                                    
                 var tab = $('#tabs').tabs('getTab',1);  // get selected panel
                 
@@ -238,6 +199,16 @@ function debug(istr)
     
 function check()
 {
+                var url2=PATH+'/ajax_func.php?func=device_data&id=7';
+                //alert(url2);
+                $.getJSON( url2, function( data ) 
+                {
+                    localStorage.device_time=data.device_time;
+                    localStorage.batt1=data.voltage1;
+                    localStorage.batt2=data.voltage2;
+                    //setCookie('delta',data.delta);
+                //$('#duser').html('Тесты выполняет '+data[0].fio);
+                });
               //alert(serializedArr);
               pr_send=0;
               setCookie('pr_send',pr_send);
@@ -391,7 +362,7 @@ $( document ).ready(function()
                 //alert(url2);
                 $.getJSON( url2, function( data ) 
                 {
-                        $('#duser').html('Тесты выполняет '+data[0].fio);
+                        
                         //alert(data[0].id_exp);
                         //if ($('#id_exp').val()==0)
                         //{
@@ -400,6 +371,7 @@ $( document ).ready(function()
                         //alert('user='+id_user+'-'+id_exp);
                         //setCookie('id_exp',id_exp);
                         //}
+                        $('#duser').html('Тесты выполняет '+data[0].fio+' эксп.'+id_exp);
                 });
                 
                 
