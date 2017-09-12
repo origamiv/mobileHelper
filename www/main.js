@@ -353,7 +353,10 @@ $(document).ready(function()
     url = PATH + '/ajax_func.php?func=trainings&cmd=ALL';
     $.getJSON(url, function(data)
     {
+        alert(data);
         localStorage.trainings = JSON.stringify(data);
+        alert(localStorage.trainings);
+        alert('dddd');
     });
 
     show_time_all();
