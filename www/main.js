@@ -214,6 +214,7 @@ function check()
     var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
     $.getJSON(url4, function(data4)
     {
+        alert(data4);
         localStorage.device_time = data4.device_time;
         localStorage.batt1 = data4.voltage1;
         localStorage.batt2 = data4.voltage2;
