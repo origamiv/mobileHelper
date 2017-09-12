@@ -219,20 +219,21 @@ function check()
 async: false
 });
     
+    //alert('A1');
+    
     $.getJSON(url4, function(data4)
     {
-        alert('DATA '+data4.device_time);
+        //alert('DATA '+data4.device_time);
         localStorage.device_time = data4.device_time;
         localStorage.batt1 = data4.voltage1;
         localStorage.batt2 = data4.voltage2;
-        alert('LS'+localStorage.device_time);
+        //alert('LS'+localStorage.device_time);
     
     
-    
+     //alert('A2');
     pr_send = 0;
     setCookie('pr_send', pr_send);
     
-
     var id_exp = $('#id_exp').val();
     var url2 = PATH + '/ajax_func.php?func=check_data_integrity&id_exp=' + id_exp;
     $.post(url2,
@@ -241,30 +242,25 @@ async: false
         })
         .done(function(data1)
         {
+            //alert(data1);
             if (data1!='No valid data')
             {
             data2 = JSON.parse(data1);
 
-            alert('0');            
+
             $.each(data2, function(key, data)
             {
                 if (data != null)
                 {
-                    alert('1');
                     pr_send = 1;
-                    //s12 = JSON.stringify(data);
-
                     must = data.cmd + '_must';
                     fact = data.cmd + '_fact';
                     activity[fact] = data.fact;
-                    alert('2');
+
 
                     serAct = JSON.stringify(activity);
                     setCookie('activity', serAct);
-                    alert('STA'+localStorage.device_time);
-                    alert('3');
                     show_time_all();
-                    alert('4');
                 }
                 else
                 {
@@ -274,13 +270,20 @@ async: false
                 }
             });
             }
+            else
+            {
+                show_time_all();
+            }
         });
 
-    pr_send = getCookie('pr_send');    
-    
+    pr_send = getCookie('pr_send');       
+
+    });
+    //alert('A3');
     $.ajaxSetup({
 async: true
 });
+
 }
 
 function stopTest()
@@ -324,7 +327,7 @@ $(document).ready(function()
     debug('start');
     results_from_cookie();
     cmd = 'S1';
-    
+    //alert('000');
     $('#ptime').hide();
 
     t = Date.now();
@@ -360,7 +363,7 @@ $(document).ready(function()
             device_id = data[0].device_id;
             $('#id_exp').val(data[0].id_exp);
             id_exp = $('#id_exp').val();
-            $('#duser').html('Тесты выполняет ' + data[0].fio + ' эксп.' + id_exp);
+            $('#duser').html('Тесты выполняет ' + data[0].fio + '('+ data[0].id+') эксп.' + id_exp+' dev.'+device_id);
         });
     }
 
