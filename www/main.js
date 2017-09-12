@@ -31,7 +31,7 @@ function results_from_cookie()
     {
         del_activity();
     }
-     alert('1');
+     //alert('1');
     //alert(serializedArr);
     if ((serializedArr != undefined) && (serializedArr != ''))
     {
@@ -47,12 +47,12 @@ function results_from_cookie()
             }
         }
         $('#save').show();
-        alert('2');
+        //alert('2');
     }
     else
     {
         $('#save').hide();
-        alert('3');
+        //alert('3');
     }
 }
 
@@ -117,6 +117,8 @@ function show_time_all()
 {
 
     //alert(localStorage.batt1);
+    alert(cmd);
+    if (cmd=='') {cmd='S1';}
     must = cmd + '_must';
     t1 = activity[must];
 
@@ -151,6 +153,7 @@ function show_time_all()
     timestr = timestr + '<tr><td>Время с каски</td><td colspan=2>' + localStorage.device_time + '</td></tr>';
     timestr = timestr + '<tr><td>Батарея</td><td style="' + style_def + '">' + localStorage.batt1 + '</td><td style="' + style_def + '">' + localStorage.batt2 + '</td></tr>';
 
+    alert('22');
     trainings = JSON.parse(localStorage.trainings);
     for (cmd2 in trainings)
     {
@@ -174,6 +177,7 @@ function show_time_all()
         timestr = timestr + '<td style="' + style1 + '">' + activity[fact] + '</td><td><a activity="' + cmd2 + '" class="delact">Удалить</a></td></tr>';
     }
 
+    alert('23');
     timestr = timestr + '</table>';
 
     var tab = $('#tabs').tabs('getTab', 1); // get selected panel
@@ -189,6 +193,7 @@ function show_time_all()
     {
         iconCls: 'icon-cancel'
     });
+    alert('24');
 
 }
 
