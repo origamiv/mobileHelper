@@ -215,9 +215,9 @@ function check()
     var url4 = PATH + '/ajax_func.php?func=device_data&id=' + device_id+'&t0='+t00;
     //alert(url4);
     
-//    $.ajaxSetup({
-//async: false
-//});
+    $.ajaxSetup({
+async: false
+});
     
     $.getJSON(url4, function(data4)
     {
@@ -241,9 +241,11 @@ function check()
         })
         .done(function(data1)
         {
+            if (data!='No valid data')
+            {
             data2 = JSON.parse(data1);
 
-            alert('0');
+            alert('0');            
             $.each(data2, function(key, data)
             {
                 if (data != null)
@@ -271,15 +273,14 @@ function check()
                     alert('На сервере пусто, попробуйте позже.');
                 }
             });
+            }
         });
 
     pr_send = getCookie('pr_send');    
     
-//    $.ajaxSetup({
-//async: true
-//});
-
-    });
+    $.ajaxSetup({
+async: true
+});
 }
 
 function stopTest()
